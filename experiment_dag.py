@@ -21,5 +21,5 @@ with DAG(
     second_task_1 = PythonOperator(task_id="second_task", python_callable=second_task_function)
     end_task_1 = DummyOperator(task_id="end_task_1")
 
-start_task_1 >> [first_task_1 >> second_task_1]
+start_task_1 >> [first_task_1, second_task_1]
 second_task_1 >> end_task_1
