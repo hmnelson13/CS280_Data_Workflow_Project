@@ -11,7 +11,7 @@ def second_task_function():
     return
 
 with DAG(
-    dag_id="my_first_cs280_dag",
+    dag_id="my_second_cs280_dag",
     schedule_interval="0 * * * *",
     start_date=pendulum.datetime(2023, 1, 1, tz="US/Pacific"),
     catchup=False,
