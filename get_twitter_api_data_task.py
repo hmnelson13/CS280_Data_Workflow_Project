@@ -18,7 +18,7 @@ def get_users(ti: TaskInstance, **kwargs):
 		request = requests.get(api_url, headers=get_auth_header())
 		user_requests.append(request.json())
 		ti.xcom_push("list_of_users", user_requests)
-    	return
+	return
 
 def get_tweets(ti: TaskInstance, **kwargs):
 	tweets = Variable.get(f"TWITTER_TWEET_IDS", [], deserialize_json=True)
