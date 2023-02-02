@@ -23,8 +23,7 @@ def get_tweets(ti: TaskInstance, **kwargs):
 	for tweet_id in tweets:
 		api_url = f"https://api.twitter.com/2/users/{user_id}?tweet.fields=public_metrics,author_id,text"
 		request = requests.get(api_url, headers=get_auth_header())
-		tweet_requests.append(request.json())
-		ti.xcom_push("list_of_tweets", tweet_requests.json)
+		ti.xcom_push("list_of_tweets", tweet_requests.json())
 	return
 
 def read_and_print_users(ti: TaskInstance, **kwargs):
