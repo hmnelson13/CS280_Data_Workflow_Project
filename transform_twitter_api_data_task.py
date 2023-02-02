@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 import requests
 from airflow.models import Variable
 from airflow.models import TaskInstance
-
+import pandas as pd
 
 def transform_twitter_api_data_func(ti: TaskInstance, **kwargs):
 	users_list = ti.xcom_pull(key="list_of_users", task_ids="get_users")
@@ -13,6 +13,7 @@ def transform_twitter_api_data_func(ti: TaskInstance, **kwargs):
 	
 	df_users = pd.read_json(users_list)
 	df_tweets = pd.read_json(tweets_list)
+	df_users
 	return
 
 
