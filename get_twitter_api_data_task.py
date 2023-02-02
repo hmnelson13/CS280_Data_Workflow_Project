@@ -12,6 +12,7 @@ def get_auth_header():
 
 def get_users(ti: TaskInstance, **kwargs):
 	users = Variable.get(f"TWITTER_USER_IDS", [], deserialize_json=True)
+	user_requests = []
 	for user_id in users:
 		api_url = f"https://api.twitter.com/2/users/{user_id}?user.fields=public_metrics,profile_image_url,username,description,id"
 		request = requests.get(api_url, headers=get_auth_header())
