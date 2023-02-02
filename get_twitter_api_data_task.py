@@ -15,9 +15,7 @@ def get_users(ti: TaskInstance, **kwargs):
 	for user_id in users:
 		api_url = f"https://api.twitter.com/2/users/{user_id}?user.fields=public_metrics,profile_image_url,username,description,id"
 		request = requests.get(api_url, headers=get_auth_header())
-		print(request.json())
-		#user_requests.append(request.json())
-		#ti.xcom_push("list_of_users", user_requests)
+		ti.xcom_push("list_of_users", request)
 	return
 
 def get_tweets(ti: TaskInstance, **kwargs):
