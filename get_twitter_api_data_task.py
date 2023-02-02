@@ -45,22 +45,22 @@ with DAG(
 	start_date=pendulum.datetime(2023, 1, 1, tz="US/Pacific"),
 	catchup=False,
 ) as dag:
-start_task = PythonOperator(
-	task_id="get_users",
-	python_callable=get_users,
-	provide_context=True)
-first_task = PythonOperator(
-	task_id="get_tweets",
-	python_callable=get_tweets,
-	provide_context=True)
-second_task = PythonOperator(
-	task_id="second_task",
-	python_callable=read_and_print_users,
-	provide_context=True)
-third_task = PythonOperator(
-	task_id="third_task",
-	python_callable=read_and_print_tweets,
-	provide_context=True)
+	start_task = PythonOperator(
+		task_id="get_users",
+		python_callable=get_users,
+		provide_context=True)
+	first_task = PythonOperator(
+		task_id="get_tweets",
+		python_callable=get_tweets,
+		provide_context=True)
+	second_task = PythonOperator(
+		task_id="second_task",
+		python_callable=read_and_print_users,
+		provide_context=True)
+	third_task = PythonOperator(
+		task_id="third_task",
+		python_callable=read_and_print_tweets,
+		provide_context=True)
 
 
 start_task >> first_task >> second_task >> third_task
