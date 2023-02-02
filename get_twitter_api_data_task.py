@@ -28,12 +28,12 @@ def get_tweets(ti: TaskInstance, **kwargs):
 
 def read_and_print_users(ti: TaskInstance, **kwargs):
 	users_list = ti.xcom_pull(key="list_of_users", task_ids="get_users")
-	logging.info(users_list)
+	log.info(users_list)
 	return
 
 def read_and_print_tweets(ti: TaskInstance, **kwargs):
 	tweets_list = ti.xcom_pull(key="list_of_tweets", task_ids="get_tweets")
-	logging.info(tweets_list)
+	log.info(tweets_list)
 	return
 
 with DAG(
