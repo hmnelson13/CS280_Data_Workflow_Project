@@ -5,6 +5,7 @@ from airflow.operators.python import PythonOperator
 import requests
 from airflow.models import Variable
 from airflow.models import TaskInstance
+import pandas as pd
 
 def get_auth_header():
 	my_bearer_token = Variable.get("TWITTER_BEARER_TOKEN")
