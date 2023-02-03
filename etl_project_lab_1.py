@@ -35,7 +35,8 @@ def transform_twitter_api_data_func(ti: TaskInstance, **kwargs):
         users_list = ti.xcom_pull(key="list_of_users", task_ids="extract")
         tweets_list = ti.xcom_pull(key="list_of_tweets", task_ids="extract")
 
-	user_df = {'user_id':[],'username':[],'name':[],'followers_count':[],'following_count':[],'tweet_count':[],'listed_count':[]}
+	user_df = {'user_id':[],'username':[],'name':[],'followers_count':[],
+		'following_count':[],'tweet_count':[],'listed_count':[]}
 
 	for user in users_list:
 		user_df['user_id'].append(user['data']['id'])
@@ -47,7 +48,8 @@ def transform_twitter_api_data_func(ti: TaskInstance, **kwargs):
 		user_df['listed_count'].append(tweet['data']['public_metrics']['listed_count'])
 
 
-	tweet_df = {'tweet_id':[],'text':[],'retweet_count':[],'reply_count':[],'like_count':[],'quote_count':[],'impression_count':[]}
+	tweet_df = {'tweet_id':[],'text':[],'retweet_count':[],'reply_count':[],
+		'like_count':[],'quote_count':[],'impression_count':[]}
 
 	for tweet in tweets_list:
 		tweet_df['tweet_id'].append(tweet['data']['id'])
