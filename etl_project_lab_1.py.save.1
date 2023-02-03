@@ -41,11 +41,7 @@ def transform_twitter_api_data_func(ti: TaskInstance, **kwargs):
 		user_df['user_id'].append(user['data']['id'])
 		user_df['username'].append(user['data']['username'])
 		user_df['name'].append(user['data']['name'])
-		user_df['followers_count'].append(tweet['data']['public_metrics']['followers_count'])
-		user_df['following_count'].append(tweet['data']['public_metrics']['following_count'])
-		user_df['tweet_count'].append(tweet['data']['public_metrics']['tweet_count'])
-		user_df['listed_count'].append(tweet['data']['public_metrics']['listed_count'])
-
+		user_df['reply_count'].append(tweet['data']['public_metrics']['reply_count'])
 
 	tweet_df = {'tweet_id':[],'text':[],'retweet_count':[],'reply_count':[],'like_count':[],'quote_count':[],'impression_count':[]}
 
